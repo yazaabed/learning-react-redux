@@ -1,0 +1,41 @@
+html {
+  font-size: 65%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-style: normal;
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 2rem;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: 2rem;
+  padding: 0;
+  font-weight: normal;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.reduxstagram-app {
+  padding: 4rem;
+  margin-bottom: 2rem;
+}
