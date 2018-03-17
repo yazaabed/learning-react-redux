@@ -15,7 +15,8 @@ const styles = theme => ({
     flexWrap: "wrap"
   },
   formControl: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
+    width: "47%"
   }
 });
 
@@ -49,6 +50,9 @@ class AddCommentsFormComponent extends React.Component {
         ref="commentForm"
         className={classes.container}
         onSubmit={this.handleSubmit.bind(this)}
+        style={{
+          widht: "100%"
+        }}
       >
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="author">Author</InputLabel>
