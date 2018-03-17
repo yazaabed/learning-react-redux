@@ -6,25 +6,29 @@ import React from "react";
 import Paper from "material-ui/Paper";
 
 /**
- * Import static data
- */
-import * as data from "../../../data";
-
-/**
  * Import photo compoenent
  */
 import { Photo, Comments } from "../../components";
 
 class ImageDetails extends React.Component {
   render() {
-    const postId = this.props.match.params.id;
-    const post = data.posts.find(post => post.id === postId);
-    const postComments = data.comments[post.code];
+    const postId = this.props.postId;
+    const post = this.props.posts.find(post => post.id === postId);
+    const postComments = this.props.comments[post.code];
+    const index = this.props.posts.indexOf(post);
+
+    post.index = index;
 
     return (
       <Paper>
-        <Photo post={post} />
-        <Comments comments={postComments} />
+        <Photo post={post} onLikeClicked={this.props.increment} />
+        <Comments
+          comments={postComments}
+          postCode={post.code}
+          postId={post.id}
+          onRemoveComments={this.props.removeComment}
+          onAddComments={this.props.addComment}
+        />
       </Paper>
     );
   }

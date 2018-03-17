@@ -20,8 +20,6 @@ function postComments(state = [], action) {
     default:
       return state;
   }
-
-  return state;
 }
 
 function comments(state = [], action) {

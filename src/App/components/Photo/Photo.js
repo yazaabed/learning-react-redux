@@ -42,7 +42,7 @@ class PhotoComponent extends React.Component {
         </Link>
         <CardContent>
           <p>{post.caption}</p>
-          <IconButton>
+          <IconButton onClick={event => this.props.onLikeClicked(post.index)}>
             <FavoriteIcon color="error" /> {post.likes}
           </IconButton>
         </CardContent>
@@ -53,7 +53,8 @@ class PhotoComponent extends React.Component {
 
 PhotoComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  onLikeClicked: PropTypes.func.isRequired
 };
 
 const Photo = withStyles(styles)(PhotoComponent);

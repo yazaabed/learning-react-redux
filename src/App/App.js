@@ -34,7 +34,6 @@ import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 class AppComponent extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="reduxstagram-app">
         <h1
@@ -64,11 +63,26 @@ class AppComponent extends Component {
         />
 
         <Switch>
-          <Route path="/" exact component={Pages.ImageGrid} />
+          <Route
+            path="/"
+            exact
+            render={({ match }) => {
+              return React.cloneElement(<Pages.ImageGrid />, {
+                ...this.props
+              });
+            }}
+          />
           <Route
             path="/image-details/:id"
             exact
-            component={Pages.ImageDetails}
+            render={({ match }) => {
+              return React.cloneElement(
+                <Pages.ImageDetails postId={match.params.id} />,
+                {
+                  ...this.props
+                }
+              );
+            }}
           />
           <Redirect from="*" to="/" />
         </Switch>

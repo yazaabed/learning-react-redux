@@ -16,11 +16,6 @@ import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
 
 /**
- * Import static data
- */
-import * as data from "../../../data";
-
-/**
  * Import photo compoenent
  */
 import { Photo } from "../../components";
@@ -34,16 +29,20 @@ const styles = theme => ({
 
 class ImageGridComponent extends React.Component {
   render() {
-    const { classes } = this.props;
-
-    console.log(this.props);
+    const { classes, posts, increment } = this.props;
 
     return (
       <div className={classes.root}>
         <Grid container spacing={40}>
-          {data.posts.map(post => (
-            <Grid item xs={12} sm={6} key={post.id}>
-              <Photo post={post} />
+          {posts.map((post, index) => (
+            <Grid item xs={12} sm={6} lg={4} key={post.id}>
+              <Photo
+                post={{
+                  ...post,
+                  index
+                }}
+                onLikeClicked={increment}
+              />
             </Grid>
           ))}
         </Grid>

@@ -8,9 +8,17 @@ import PropTypes from "prop-types";
 /**
  * Import material-ui things
  */
-import List, { ListItem, ListItemText } from "material-ui/List";
+import List, {
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction
+} from "material-ui/List";
 import Avatar from "material-ui/Avatar";
+import IconButton from "material-ui/IconButton";
 import WorkIcon from "material-ui-icons/Work";
+import ClearIcon from "material-ui-icons/Clear";
+
+import AddCommentsForm from "./components/AddCommentsForm/AddCommentsForm";
 
 class Comments extends React.Component {
   renderComments(comment, i) {
@@ -20,21 +28,30 @@ class Comments extends React.Component {
           <WorkIcon />
         </Avatar>
         <ListItemText inset primary={comment.text} secondary={comment.user} />
+        <ListItemSecondaryAction>
+          <IconButton
+            onClick={event =>
+              this.props.onRemoveComments(this.props.postCode, i)
+            }
+          >
+            <ClearIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
       </ListItem>
     );
   }
 
   render() {
-    console.log(this.props);
+    let renderedComponents = [];
 
-    if (this.props.comments) {
-      return (
+    if (this.props.comments && this.props.comments.length) {
+      renderedComponents.push(
         <List component="nav">
-          {this.props.comments.map(this.renderComments)}
+          {this.props.comments.map(this.renderComments.bind(this))}
         </List>
       );
     } else {
-      return (
+      renderedComponents.push(
         <div
           style={{
             margin: 30,
@@ -46,11 +63,24 @@ class Comments extends React.Component {
         </div>
       );
     }
+
+    renderedComponents.push(
+      <AddCommentsForm
+        onFormSubmit={this.props.onAddComments}
+        postCode={this.props.postCode}
+      />
+    );
+
+    return renderedComponents;
   }
 }
 
 Comments.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.object).isRequired
+  comments: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onRemoveComments: PropTypes.func.isRequired,
+  onAddComments: PropTypes.func.isRequired,
+  postCode: PropTypes.string.isRequired,
+  postId: PropTypes.string.isRequired
 };
 
 export default Comments;
