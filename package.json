@@ -4,7 +4,6 @@
   "description":
     "Like instagram web app to learn react with redux from wesbos course for learning react",
   "keywords": ["react-router-v4", "modules", "learning", "redux", "reactjs"],
-  "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
     "history": "4.7.2",

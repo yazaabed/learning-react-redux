@@ -18,7 +18,9 @@ import Grid from "material-ui/Grid";
 /**
  * Import photo compoenent
  */
-import { Photo } from "../../components";
+import components from "../../components";
+
+const Photo = components.Photo;
 
 const styles = theme => ({
   root: {

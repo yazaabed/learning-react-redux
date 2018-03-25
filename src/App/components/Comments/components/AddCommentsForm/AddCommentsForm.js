@@ -1,7 +1,7 @@
 import React from "react";
 
 import Input, { InputLabel } from "material-ui/Input";
-import { FormControl, FormHelperText } from "material-ui/Form";
+import { FormControl } from "material-ui/Form";
 import { withStyles } from "material-ui/styles";
 
 /**

@@ -8,7 +8,10 @@ import Paper from "material-ui/Paper";
 /**
  * Import photo compoenent
  */
-import { Photo, Comments } from "../../components";
+import components  from "../../components";
+
+const Photo = components.Photo;
+const Comments = components.Comments;
 
 class ImageDetails extends React.Component {
   render() {

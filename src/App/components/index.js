@@ -1,2 +1,7 @@
-export Photo from "./Photo/Photo";
-export Comments from "./Comments/Comments";
+import Photo from "./Photo/Photo";
+import Comments from "./Comments/Comments";
+
+export default {
+    Photo,
+    Comments
+};

@@ -1,2 +1,8 @@
-export comments from "./comments";
-export posts from "./posts";
+import comments from "./comments";
+import posts from "./posts";
+
+export default {
+    comments,
+    posts
+};
+
